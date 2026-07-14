@@ -165,31 +165,6 @@ npm run dev
 
 Presentación con el resumen visual de funcionalidades, arquitectura MVC y modelo de datos: **`AfroDigital_UPB_Fase2.pptx`**
 
-**📌 Para incluir las diapositivas en este README:**
-
-1. Exporta cada diapositiva como imagen (`.png` o `.jpg`) desde PowerPoint/Google Slides (*Archivo → Descargar → Imagen JPEG*).
-2. Súbelas a la carpeta `docs/slides/` del repositorio, nombradas como `slide-01.png`, `slide-02.png`, etc.
-3. Reemplaza los placeholders de abajo por las imágenes subidas.
-
-<!-- 👇 Reemplaza cada línea con: ![Descripción](docs/slides/slide-XX.png) -->
-
-| # | Diapositiva | Vista previa |
-|---|-------------|---------------|
-| 1 | Portada | _(subir imagen)_ |
-| 2 | Diagnóstico Fase 1 | _(subir imagen)_ |
-| 3 | Objetivo Fase 2 + público objetivo | _(subir imagen)_ |
-| 4 | Funcionalidades (8 módulos) | _(subir imagen)_ |
-| 5 | Foro y Comunidades | _(subir imagen)_ |
-| 6 | Salas en vivo, Mapa y Eventos | _(subir imagen)_ |
-| 7 | Gamificación y Moderación | _(subir imagen)_ |
-| 8 | Arquitectura MVC | _(subir imagen)_ |
-| 9 | Estructura de carpetas | _(subir imagen)_ |
-| 10 | Flujo de ejemplo: publicar un post | _(subir imagen)_ |
-| 11 | Modelo de datos | _(subir imagen)_ |
-| 12 | Stack tecnológico | _(subir imagen)_ |
-| 13 | Roadmap | _(subir imagen)_ |
-| 14 | Cierre | _(subir imagen)_ |
-
 También puedes descargar el archivo original aquí: [`docs/AfroDigital_UPB_Fase2.pptx`](./docs/AfroDigital_UPB_Fase2.pptx)
 
 ## Créditos

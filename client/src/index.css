@@ -1,1 +1,126 @@
 @import "tailwindcss";
+
+/* ══ PALETA ══════════════════════════════════════════════════ */
+:root {
+  --purple:     #7C3AED;
+  --purple-2:   #A78BFA;
+  --purple-dim: rgba(124,58,237,0.10);
+  --purple-glow:rgba(124,58,237,0.28);
+  --blue:       #2563EB;
+  --blue-2:     #60A5FA;
+  --orange:     #FB923C;
+  --orange-2:   #FDE68A;
+  --cream:      #FAFAF8;
+  --cream-2:    #F3EDE3;
+  --ink:        #1A1523;
+  --ink-2:      #3D3553;
+  --muted:      #9187A4;
+}
+
+/* ══ BASE ════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: -apple-system, 'Inter', 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══ FONDO CON AURA (aplicar en wrapper de cada página) ══════ */
+.page-bg {
+  min-height: 100vh;
+  background: var(--cream);
+  position: relative;
+}
+
+/* Aura de colores difuminados */
+.page-bg::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at -5% 0%,   rgba(124,58,237,0.11) 0%, transparent 65%),
+    radial-gradient(ellipse 600px 600px at 105% 0%,   rgba(37,99,235,0.08)  0%, transparent 65%),
+    radial-gradient(ellipse 500px 500px at 100% 100%, rgba(251,146,60,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 700px 500px at 0%  100%,  rgba(124,58,237,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 900px 400px at 50% 50%,   rgba(167,139,250,0.04)0%, transparent 70%);
+}
+
+/* Patrón de puntos sobre la aura */
+.page-bg::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle, rgba(124,58,237,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.page-bg > * { position: relative; z-index: 1; }
+
+/* ══ GLASS CARDS ════════════════════════════════════════════ */
+.glass {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.88);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 16px 48px rgba(0,0,0,0.06);
+}
+.glass-purple {
+  background: rgba(237,233,254,0.65);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(167,139,250,0.30);
+  box-shadow: 0 2px 8px rgba(124,58,237,0.06), 0 16px 48px rgba(124,58,237,0.10);
+}
+
+/* ══ TEXTO CON EFECTO CHROME / GRADIENTE ════════════════════ */
+.text-chrome {
+  background: linear-gradient(135deg, var(--purple) 0%, var(--purple-2) 40%, var(--blue) 70%, var(--orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-shimmer {
+  background: linear-gradient(90deg, var(--purple), var(--blue-2), var(--orange), var(--purple));
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ══ ANIMACIONES ════════════════════════════════════════════ */
+@keyframes shimmer   { to { background-position: 250% center; } }
+@keyframes fadeUp    { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+@keyframes float     { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+@keyframes spin      { to { transform:rotate(360deg); } }
+@keyframes glow-pulse{ 0%,100%{opacity:.5;} 50%{opacity:1;} }
+@keyframes ring-spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+.anim-up    { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-float { animation: float 5s ease-in-out infinite; }
+.anim-spin  { animation: spin 0.8s linear infinite; }
+.anim-ring  { animation: ring-spin 18s linear infinite; }
+
+.delay-1 { animation-delay:.10s; }
+.delay-2 { animation-delay:.20s; }
+.delay-3 { animation-delay:.32s; }
+.delay-4 { animation-delay:.44s; }
+
+/* ══ SCROLLBAR ══════════════════════════════════════════════ */
+::-webkit-scrollbar       { width:4px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(124,58,237,0.25); border-radius:4px; }
+
+
+* {
+  font-family: "Asap", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+}
