@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import api from '../services/apiClient';
+import profilePattern from '../assets/visuals/profile-pattern.svg';
 
 /* ══ DATOS DE INSIGNIAS ═════════════════════════════════════ */
 const ALL_BADGES = [
@@ -39,17 +40,15 @@ export default function ProfileView() {
   const [editing, setEditing] = useState(false);
   const [saving,  setSaving]  = useState(false);
   const [form,    setForm]    = useState({});
+  const memberSince = useMemo(() => {
+    const createdAt = user?.created_at ? new Date(user.created_at) : null;
+    return createdAt?.toLocaleDateString('es-CO', { month:'long', year:'numeric' }) ?? 'fecha pendiente';
+  }, [user]);
 
   const inicial = profile?.full_name?.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase() ?? '?';
 
   useEffect(() => {
     if (!user) return;
-    setForm({
-      full_name:           profile?.full_name           ?? '',
-      bio:                 profile?.bio                 ?? '',
-      university:          profile?.university          ?? '',
-      origin_municipality: profile?.origin_municipality ?? '',
-    });
     const load = async () => {
       try {
         const [p] = await Promise.all([
@@ -58,17 +57,31 @@ export default function ProfileView() {
         ]);
         setPosts((p || []).filter(x => x.author?.id === user.id || x.author_id === user.id));
         setEarned(['profile_complete']);
-      } catch (_) {}
-      finally { setLoading(false); }
+      } catch (error) {
+        console.error('[ProfileView] Error al cargar datos del perfil', error);
+      } finally { setLoading(false); }
     };
     load();
-  }, [user, profile]);
+  }, [user]);
+
+  const startEditing = () => {
+    setForm({
+      full_name:           profile?.full_name           ?? '',
+      bio:                 profile?.bio                 ?? '',
+      university:          profile?.university          ?? '',
+      origin_municipality: profile?.origin_municipality ?? '',
+    });
+    setEditing(true);
+  };
 
   const handleSave = async () => {
     setSaving(true);
-    try { await updateProfile(form); setEditing(false); }
-    catch (_) {}
-    finally { setSaving(false); }
+    try {
+      await updateProfile(form);
+      setEditing(false);
+    } catch (error) {
+      console.error('[ProfileView] Error al guardar perfil', error);
+    } finally { setSaving(false); }
   };
 
   /* Handlers de focus para los inputs */
@@ -131,6 +144,8 @@ export default function ProfileView() {
 
           {/* Cover banner */}
           <div className="h-[200px] relative overflow-hidden bg-gradient-to-br from-[#3B0764] via-[#1D4ED8] to-[#FB923C]">
+            <img src={profilePattern} alt="Patrón textil afro para portada de perfil" className="absolute inset-0 w-full h-full object-cover opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1A1523]/45 to-transparent" />
 
             {/* Decoración */}
             <div className="absolute -top-[60px] -right-[60px] w-[280px] h-[280px] rounded-full bg-white/[0.06] border border-white/10"/>
@@ -147,7 +162,7 @@ export default function ProfileView() {
             </div>
 
             {/* Botón editar */}
-            <button onClick={() => setEditing(!editing)}
+            <button onClick={() => editing ? setEditing(false) : startEditing()}
               className="absolute top-5 left-6 flex items-center gap-1.5 px-[18px] py-[7px] rounded-full text-[13px] font-semibold text-white border border-white/25 cursor-pointer transition-all font-[inherit]"
               style={{ background:'rgba(255,255,255,0.15)', backdropFilter:'blur(12px)' }}
               onMouseEnter={e => e.currentTarget.style.background='rgba(255,255,255,0.25)'}
@@ -237,7 +252,7 @@ export default function ProfileView() {
                   )}
                   <span className="flex items-center gap-1.5 text-[15px] text-[#9187A4] font-medium">
                     <Ico d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" s={16}/>
-                    Miembro desde {new Date(user?.created_at ?? Date.now()).toLocaleDateString('es-CO',{month:'long',year:'numeric'})}
+                    Miembro desde {memberSince}
                   </span>
                 </div>
 
@@ -246,7 +261,7 @@ export default function ProfileView() {
                       {profile.bio}
                     </p>
                   : <p className="text-[15px] text-[rgba(145,135,164,0.60)] italic cursor-pointer"
-                      onClick={() => setEditing(true)}>
+                      onClick={startEditing}>
                       + Agrega una biografía para que la comunidad te conozca...
                     </p>
                 }

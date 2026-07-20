@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
 import Sidebar from '../components/shared/Sidebar';
+import badgeTotem from '../assets/visuals/badge-totem.svg';
 
 const ALL_BADGES = [
   { key:'profile_complete', name:'Primer paso',       xp:50,  desc:'Completa todos tus datos de perfil',               icon:'✊🏿', color:'#7C3AED', how:'Llena universidad, municipio y bio en tu perfil', earned:true  },
@@ -35,7 +35,6 @@ const G = {
 };
 
 export default function AchievementsView() {
-  const { profile } = useAuth();
   const [tab, setTab] = useState('badges');
 
   const earned     = ALL_BADGES.filter(b => b.earned);
@@ -61,12 +60,15 @@ export default function AchievementsView() {
       <div style={{ marginLeft:'90px', padding:'40px 48px 60px', position:'relative', zIndex:1, maxWidth:'1100px' }}>
 
         {/* ── CABECERA ──────────────────────────────────────── */}
-        <div style={{ marginBottom:'36px' }}>
+        <div style={{ marginBottom:'36px', display:'flex', alignItems:'center', justifyContent:'space-between', gap:'28px' }}>
+          <div>
           <p style={{ fontSize:'12px', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(255,255,255,0.35)', fontWeight:600, marginBottom:'6px' }}>AfroDigital UPB</p>
           <h1 style={{ fontSize:'64px', fontWeight:900, lineHeight:0.92, letterSpacing:'-3px' }}>
             <span style={{ background:'linear-gradient(135deg,#FCA87A,#A78BFA,#60A5FA)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>Log</span>
             <span style={{ color:'rgba(255,255,255,0.92)' }}>ros</span>
           </h1>
+          </div>
+          <img src={badgeTotem} alt="Tótem visual de insignias AfroDigital" style={{ width:'180px', height:'180px', objectFit:'cover', borderRadius:'32px', border:'1px solid rgba(255,255,255,0.14)', boxShadow:'0 24px 72px rgba(0,0,0,0.38)' }} />
         </div>
 
         {/* ── HERO: XP + PROGRESO ───────────────────────────── */}

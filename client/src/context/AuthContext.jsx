@@ -6,10 +6,9 @@
 //   1. Envuelve <App> con <AuthProvider> en main.jsx
 //   2. En cualquier componente: const { user, profile, login } = useAuth()
 
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import supabase from '../services/supabaseClient';
-
-const AuthContext = createContext(null);
+import AuthContext from './authContext';
 
 // ── Provider ─────────────────────────────────────────────────────
 export function AuthProvider({ children }) {
@@ -113,11 +112,4 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-// ── Hook ─────────────────────────────────────────────────────────
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth debe usarse dentro de <AuthProvider>');
-  return ctx;
 }

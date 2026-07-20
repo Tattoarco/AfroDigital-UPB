@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Sidebar from '../components/shared/Sidebar';
+import communityMural from '../assets/visuals/community-mural.svg';
 
 /* ── Datos mock (reemplazar con API cuando esté listo) ────── */
 const COMMUNITIES = [
@@ -30,7 +31,7 @@ export default function CommunityView() {
   const [communities, setCommunities] = useState(COMMUNITIES);
   const [search,      setSearch]      = useState('');
   const [filter,      setFilter]      = useState('all');
-  const [creating,    setCreating]    = useState(false);
+  const [,           setCreating]    = useState(false);
 
   const joined    = communities.filter(c => c.joined);
   const filtered  = communities.filter(c => {
@@ -60,7 +61,7 @@ export default function CommunityView() {
       <div style={{ marginLeft:'90px', padding:'40px 48px 60px', position:'relative', zIndex:1 }}>
 
         {/* ── CABECERA ──────────────────────────────────────── */}
-        <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', marginBottom:'36px' }}>
+        <div style={{ display:'flex', alignItems:'flex-end', justifyContent:'space-between', gap:'28px', marginBottom:'36px' }}>
           <div>
             <p style={{ fontSize:'12px', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(255,255,255,0.35)', fontWeight:600, marginBottom:'6px' }}>
               AfroDigital UPB
@@ -72,11 +73,14 @@ export default function CommunityView() {
               <span style={{ color:'rgba(255,255,255,0.92)' }}>dades</span>
             </h1>
           </div>
-          <button onClick={()=>setCreating(true)}
-            style={{ padding:'13px 24px', borderRadius:'16px', background:'linear-gradient(135deg,#7C3AED,#2563EB)', border:'none', color:'#fff', fontSize:'15px', fontWeight:700, cursor:'pointer', boxShadow:'0 8px 28px rgba(124,58,237,0.50)', transition:'all .3s', fontFamily:'inherit', display:'flex', alignItems:'center', gap:'8px' }}
-            onMouseEnter={e=>{ e.currentTarget.style.transform='translateY(-3px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(124,58,237,0.65)'; }}
-            onMouseLeave={e=>{ e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 8px 28px rgba(124,58,237,0.50)'; }}
-          >+ Crear comunidad</button>
+          <div style={{ display:'flex', alignItems:'center', gap:'18px' }}>
+            <img src={communityMural} alt="Mural ilustrado de comunidades afro conectadas" style={{ width:'270px', height:'150px', objectFit:'cover', borderRadius:'24px', border:'1px solid rgba(255,255,255,0.16)', boxShadow:'0 22px 70px rgba(0,0,0,0.34)' }} />
+            <button onClick={()=>setCreating(true)}
+              style={{ padding:'13px 24px', borderRadius:'16px', background:'linear-gradient(135deg,#7C3AED,#2563EB)', border:'none', color:'#fff', fontSize:'15px', fontWeight:700, cursor:'pointer', boxShadow:'0 8px 28px rgba(124,58,237,0.50)', transition:'all .3s', fontFamily:'inherit', display:'flex', alignItems:'center', gap:'8px' }}
+              onMouseEnter={e=>{ e.currentTarget.style.transform='translateY(-3px)'; e.currentTarget.style.boxShadow='0 14px 40px rgba(124,58,237,0.65)'; }}
+              onMouseLeave={e=>{ e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 8px 28px rgba(124,58,237,0.50)'; }}
+            >+ Crear comunidad</button>
+          </div>
         </div>
 
         {/* ── MIS COMUNIDADES ───────────────────────────────── */}

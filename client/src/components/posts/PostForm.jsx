@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import api from '../../services/apiClient';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 
 const CATS = [['history','📜 Historia'],['music','🎵 Música'],['testimony','🗣️ Testimonio'],['culture','🌿 Cultura'],['news','📣 Noticia'],['other','✦ Otro']];
 
