@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import PostForm from '../components/posts/PostForm';
+import feedStory from '../assets/visuals/feed-story.svg';
 
 const NAV_ITEMS = [
   { label: 'Feed',        href: '/feed'         },
@@ -12,7 +13,7 @@ const NAV_ITEMS = [
 ];
 
 export default function FeedView() {
-  const { profile, logout } = useAuth();
+  const { profile } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const activo   = location.pathname;
@@ -194,6 +195,16 @@ export default function FeedView() {
 
           {/* ── FEED PRINCIPAL ───────────────────────────── */}
           <div className="flex flex-col gap-4">
+
+            <div className="g3d-strong overflow-hidden relative min-h-[210px] flex items-center">
+              <img src={feedStory} alt="Ilustración de historias y memoria colectiva afro" className="absolute inset-0 w-full h-full object-cover opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#080212]/95 via-[#080212]/70 to-transparent" />
+              <div className="relative z-10 px-8 py-7 max-w-[520px]">
+                <p className="text-xs uppercase tracking-[0.18em] text-[#FCA87A] font-bold mb-3">Historias vivas</p>
+                <h2 className="text-[34px] font-black leading-[0.98] tracking-[-1.4px] mb-3">Comparte memoria, territorio y cultura.</h2>
+                <p className="text-white/60 leading-relaxed text-[15px]">El feed ahora abre con una pieza visual propia para que la experiencia se sienta más cercana a AfroDigital y menos como una red social genérica.</p>
+              </div>
+            </div>
 
             {/* Caja publicar */}
             <div className="g3d-strong overflow-hidden transition-all duration-300">

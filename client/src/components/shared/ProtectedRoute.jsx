@@ -10,7 +10,7 @@
 //   Ok              → renderiza los hijos
 
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import Spinner from './Spinner';
 
 export default function ProtectedRoute({ children, role }) {

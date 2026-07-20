@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
+import afroHero from "../assets/visuals/afro-hero.svg";
 
 export default function LoginView() {
   const [modo, setModo] = useState("login");
@@ -48,13 +49,13 @@ export default function LoginView() {
         <div className="anim-ring" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-52%)", width: "520px", height: "520px", borderRadius: "50%", border: "1px solid rgba(124,58,237,0.12)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-52%)", width: "380px", height: "380px", borderRadius: "50%", border: "1px dashed rgba(124,58,237,0.10)", pointerEvents: "none" }} />
 
-        {/* Icono flotante central */}
-        <div
+        {/* Ilustración cultural */}
+        <img
+          src={afroHero}
+          alt="Collage visual de cultura afrocolombiana con patrones textiles, tambores y comunidad"
           className="anim-float"
-          style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-58%)", width: "160px", height: "160px", borderRadius: "40px", background: "rgba(255,255,255,0.70)", backdropFilter: "blur(32px)", border: "1px solid rgba(255,255,255,0.9)", boxShadow: "0 20px 80px rgba(124,58,237,0.18)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "72px" }}
-        >
-          ✊🏿
-        </div>
+          style={{ position: "absolute", top: "8%", right: "4%", width: "min(58%, 560px)", borderRadius: "42px", boxShadow: "0 30px 90px rgba(31,15,62,0.22)", border: "1px solid rgba(255,255,255,0.62)", objectFit: "cover" }}
+        />
 
         {/* Texto inferior */}
         <div style={{ position: "relative", zIndex: 2, marginTop: "auto" }}>

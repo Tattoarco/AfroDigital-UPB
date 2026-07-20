@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Sidebar from '../components/shared/Sidebar';
+import eventStage from '../assets/visuals/event-stage.svg';
 
 const EVENTS = [
   { id:1, title:'Festival AfroDigital 2026',  date:'2026-08-15', time:'18:00', location:'Campus UPB — Bloque Central', community:'Afro UPB',          attendees:45,  cap:200, color:'#7C3AED', tag:'Festival',   desc:'El encuentro más grande de la comunidad afro universitaria. Música, arte, gastronomía y tecnología en un solo lugar.', featured:true,  rsvp:false },
@@ -70,6 +71,8 @@ export default function EventsView() {
           >
             {/* Banner de color */}
             <div style={{ height:'240px', position:'relative', overflow:'hidden', background:`linear-gradient(135deg, ${featured.color}CC 0%, #080212 100%)` }}>
+              <img src={eventStage} alt="Escenario ilustrado con tambores y luces para evento afro" style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover', opacity:0.74, mixBlendMode:'screen' }} />
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(90deg,rgba(8,2,18,0.36),rgba(8,2,18,0.72))' }} />
               {/* Decoración */}
               <div style={{ position:'absolute', top:'-80px', right:'-80px', width:'400px', height:'400px', borderRadius:'50%', background:featured.color, filter:'blur(100px)', opacity:0.25 }}/>
               <div style={{ position:'absolute', bottom:'-40px', left:'30%', width:'250px', height:'250px', borderRadius:'50%', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.10)' }}/>
