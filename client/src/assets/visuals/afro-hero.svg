@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Collage cultural AfroDigital</title>
+  <desc id="desc">Ilustración abstracta con tambores, trenzas, palmas, joyería y patrones textiles afrocolombianos.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2E1065"/><stop offset=".55" stop-color="#0F172A"/><stop offset="1" stop-color="#EA580C"/></linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FDE68A"/><stop offset="1" stop-color="#FB923C"/></linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="16"/></filter>
+    <pattern id="kente" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M0 0h64v64H0z" fill="#111827"/><path d="M0 12h64M0 32h64M0 52h64" stroke="#FB923C" stroke-width="5"/><path d="M12 0v64M32 0v64M52 0v64" stroke="#7C3AED" stroke-width="5"/><path d="M0 0l64 64M64 0L0 64" stroke="#22C55E" stroke-width="3" opacity=".8"/></pattern>
+  </defs>
+  <rect width="900" height="650" rx="54" fill="url(#bg)"/>
+  <circle cx="710" cy="130" r="150" fill="#FB923C" opacity=".25" filter="url(#soft)"/>
+  <circle cx="160" cy="520" r="180" fill="#7C3AED" opacity=".28" filter="url(#soft)"/>
+  <path d="M0 450c130-78 230-72 352 0s246 74 548-60v260H0z" fill="#080212" opacity=".55"/>
+  <rect x="56" y="72" width="286" height="176" rx="34" fill="url(#kente)" opacity=".92"/>
+  <g transform="translate(560 84)"><circle r="74" cx="78" cy="78" fill="url(#sun)"/><path d="M76 8v140M8 78h140M27 29l102 100M129 29L27 129" stroke="#7C2D12" stroke-width="9" stroke-linecap="round" opacity=".45"/></g>
+  <g transform="translate(370 170)"><path d="M110 16c74 8 122 78 108 150-13 67-76 114-146 104-73-11-122-78-110-151C13 51 39 24 110 16z" fill="#3B1E13"/><path d="M27 135c34-72 92-100 170-86 19 43 13 88-18 134-49-42-100-48-152-48z" fill="#111827"/><circle cx="82" cy="126" r="10" fill="#FDE68A"/><circle cx="156" cy="123" r="10" fill="#FDE68A"/><path d="M88 178c30 18 57 16 82-3" fill="none" stroke="#FCA5A5" stroke-width="9" stroke-linecap="round"/><path d="M48 67C86 2 166 1 209 58" fill="none" stroke="#0F172A" stroke-width="24" stroke-linecap="round"/><path d="M54 58c-40 60-44 105-12 152M93 38c-18 62-15 113 8 154M137 34c4 65 19 111 46 139M180 52c37 44 43 91 20 142" fill="none" stroke="#0B1020" stroke-width="13" stroke-linecap="round"/></g>
+  <g transform="translate(110 310)"><ellipse cx="90" cy="190" rx="72" ry="24" fill="#020617" opacity=".45"/><path d="M28 62h124l-18 128H46z" fill="#7C2D12"/><ellipse cx="90" cy="62" rx="65" ry="28" fill="#FDE68A"/><ellipse cx="90" cy="62" rx="45" ry="17" fill="#92400E" opacity=".38"/><path d="M50 104h80M44 142h92" stroke="#FDE68A" stroke-width="8" stroke-linecap="round" opacity=".8"/></g>
+  <g transform="translate(650 325)"><path d="M70 210C20 153 16 89 57 18c73 59 91 124 58 195" fill="#16A34A" opacity=".9"/><path d="M77 209C57 143 60 82 86 27" stroke="#DCFCE7" stroke-width="8" stroke-linecap="round" opacity=".65"/><path d="M80 210c29-68 78-110 149-125 2 93-43 141-149 125z" fill="#22C55E" opacity=".72"/></g>
+  <g fill="none" stroke-linecap="round" opacity=".9"><path d="M454 492c42-28 92-27 146 4" stroke="#A78BFA" stroke-width="9"/><path d="M432 538c77-33 147-27 212 17" stroke="#FB923C" stroke-width="9"/><path d="M482 580c33-17 72-13 116 12" stroke="#60A5FA" stroke-width="9"/></g>
+</svg>
